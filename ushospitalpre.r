@@ -1,0 +1,13 @@
+library(ggplot2)
+library(dplyr)
+library(readxl)
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("corrplot")
+library(corrplot)
+install.packages("leaflet")
+library(leaflet)
+data<- read.csv("C:/Users/Harshit/Documents/R files/diabetic_data.csv")
+data1<- data %>%select(-encounter_id,-patient_nbr,-payer_code,-admission_type_id,-discharge_disposition_id,-admission_source_id) %>% filter(complete.cases(.))
+mask <- apply(data1, 1, function(row) any(row == '?'))
+data_ckeaned<- data1[!mask,]

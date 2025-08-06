@@ -1,0 +1,15 @@
+library(ggplot2)
+library(dplyr)
+library(readxl)
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("corrplot")
+library(corrplot)
+install.packages("leaflet")
+library(leaflet)
+install.packages("xlsx")
+library(xlsx)
+data1 <- pidd
+columns_to_check <- c("Blood pressure", "Skin thickness", "Insulin","Body mass index")
+df_clean <- data1[!apply(data1[columns_to_check], 1, function(row) any(row == 0)), ]
+write.csv(df_clean,file="cleaned2.csv")
